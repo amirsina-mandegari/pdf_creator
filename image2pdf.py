@@ -10,7 +10,7 @@ parser.add_argument(
     help="input folder path"
     )
 parser.add_argument(
-    "-output_path",
+    "--output_path",
     type=str,
     default=".",
     help="output file path"
