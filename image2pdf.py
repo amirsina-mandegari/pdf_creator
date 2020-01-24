@@ -23,7 +23,8 @@ parser.add_argument(
     )
 
 args = parser.parse_args()
-files = os.listdir(os.path.abspath(args.input_path))
+base_path = os.path.abspath(args.input_path)
+files = os.listdir(base_path)
 files.sort()
 
 output_name = args.output_name
@@ -32,5 +33,6 @@ if not output_name.endswith(".pdf"):
 
 output_file = os.path.join(os.path.abspath(args.output_path), output_name)
 with open(output_file, "wb") as f:
-    f.write(img2pdf.convert([i for i in files if i.endswith(".jpg")]))
+    f.write(img2pdf.convert([os.path.join(base_path,i) for i in files if i.endswith(".jpg")]))
+    
 print('done')
